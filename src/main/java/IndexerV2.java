@@ -1,14 +1,10 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
-import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.stream.Stream;
 
 /***
  * refactored version with List storage
@@ -67,7 +63,7 @@ public class IndexerV2 implements Indexer{
     private int findEntry(String key){
         int indx = -1;
         for (int i=0 ; i < list.size(); i++) {
-            if (checkKey(key, list.get(i))) {
+            if (checkLineByKey(list.get(i), key)) {
                 indx = i;
                 break;
             }
@@ -75,7 +71,7 @@ public class IndexerV2 implements Indexer{
         return indx;
     }
 
-    private boolean checkKey(String key, String[] line) {
+    private boolean checkLineByKey(String[] line, String key) {
         return line.length>0 && line[0]!=null && line[0].equals(key);
     }
 

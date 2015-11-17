@@ -48,6 +48,7 @@ There should be 3 methods in class that reads file:
  Original version does parsing of the lines every time it gets key and value. 
  This is not optimal and it will be better to do it in parse method once and store result in 'list' property.
  
+ 
  I don't know why originally was used List to store key-value pars, so I kept implementation with List and added one more with HashMap implementation.
  Make sure that all tests green in IndexerMap as well.
 
