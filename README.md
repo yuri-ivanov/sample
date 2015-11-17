@@ -8,6 +8,7 @@ Given Java code here  https://gist.github.com/03f45bfcbacca576d283 explain the c
 
 ## Input
  Input data is text file test.txt 
+ 
     foo|bar
     foo2|bar2
     foo2|bar3
