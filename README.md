@@ -1,4 +1,5 @@
-# Task -  Given Java code here  https://gist.github.com/03f45bfcbacca576d283 explain the code. How and why you would change it?
+# Task 
+Given Java code here  https://gist.github.com/03f45bfcbacca576d283 explain the code. How and why you would change it?
 
 ## Tools used
  * Idea v. 15
