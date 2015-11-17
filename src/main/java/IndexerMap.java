@@ -1,8 +1,6 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +9,6 @@ import java.util.Map;
  *
  */
 public class IndexerMap implements Indexer{
-    private final static String SPLIT_REGEXP = "\\|";
 
     private Map<String, String> map = new HashMap<>();
 

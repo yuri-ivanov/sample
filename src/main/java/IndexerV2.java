@@ -10,7 +10,6 @@ import java.util.List;
  *
  */
 public class IndexerV2 implements Indexer{
-    private final static String SPLIT_REGEXP = "\\|";
 
     private List<String[]> list = new ArrayList<>();
 

@@ -11,6 +11,8 @@ import java.io.IOException;
  */
 public interface Indexer {
 
+    String SPLIT_REGEXP = "\\|";
+
     void parse(String filename) throws IOException;
 
     /***
