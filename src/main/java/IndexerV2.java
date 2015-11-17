@@ -3,23 +3,45 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Stream;
 
 /***
  * refactored version with List storage
  *
  */
 public class IndexerV2 implements Indexer{
+    private static final Logger log = Logger.getLogger(IndexerV2.class.toString());
 
     private List<String[]> list = new ArrayList<>();
 
+    /**
+     * only one key/value pair will be stored
+     * if file has more than one key/value pair then it will be logged warning
+     * @param filename
+     * @throws IOException
+     */
     @Override
     public void parse(String filename) throws IOException {
+        //clear list before adding new values
         list.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = br.readLine()) != null) {
-                list.add(line.split(SPLIT_REGEXP));
+                String[] entry = line.split(SPLIT_REGEXP);
+                if(entry.length==0) continue;
+                int existEntryIndx = findEntry(entry[0]);
+                if(existEntryIndx<0){
+                    list.add(entry);
+                } else {
+                    log.warning("entry " + Arrays.toString(list.get(existEntryIndx)) +
+                            " will be replaced with " + Arrays.toString(entry) );
+                    list.set(existEntryIndx, entry);
+                }
             }
         }
     }
@@ -29,13 +51,7 @@ public class IndexerV2 implements Indexer{
      */
     @Override
     public boolean containsEntry(String key) {
-        boolean found = false;
-        for (String[] line : list) {
-            if (checkKey(key, line)) {
-                found = true;
-            }
-        }
-        return found;
+        return findEntry(key)>=0;
     }
 
     /***
@@ -43,13 +59,20 @@ public class IndexerV2 implements Indexer{
      */
     @Override
     public String getValue(String key) {
-        String result = null;
-        for (String[] line : list) {
-            if (checkKey(key, line)) {
-                result = (line.length>1)?line[1]:"";
+        int indx = findEntry(key);
+        if(indx < 0 ) return null;
+        return (list.get(indx).length>1)?list.get(indx)[1]:"";
+    }
+
+    private int findEntry(String key){
+        int indx = -1;
+        for (int i=0 ; i < list.size(); i++) {
+            if (checkKey(key, list.get(i))) {
+                indx = i;
+                break;
             }
         }
-        return result;
+        return indx;
     }
 
     private boolean checkKey(String key, String[] line) {

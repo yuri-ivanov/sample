@@ -31,6 +31,11 @@ public class IndexerTest {
     }
 
     @Test
+    public void onlyLastValueStored(){
+        assertThat(indexer.getValue("foo2")).contains("bar3");
+    }
+
+    @Test
     public void shouldReadEmptyValue(){
         assertThat(indexer.containsEntry("gg")).isTrue();
         assertThat(indexer.getValue("gg")).isEmpty();
