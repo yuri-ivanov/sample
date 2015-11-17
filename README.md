@@ -44,7 +44,7 @@ There should be 3 methods in class that reads file:
  Make green all JUnit tests.
  
 ### Part 3 - Optimization
- Original version does parsing of the lines every time it checks and return key and value. 
+ Original version does parsing of the lines every time it gets key and value. 
  This is not optimal and it will be better to do it in parse method once and store result in 'list' property.
  
  I don't know why originally was used List to store key-value pars, so I kept implementation with List and added one more with HashMap implementation.
