@@ -43,13 +43,10 @@ public class IndexerV2 implements Indexer{
      */
     @Override
     public String getValue(String key) {
-        if (!containsEntry(key)) {
-            return null;
-        }
-        String result = "";
+        String result = null;
         for (String[] line : list) {
-            if (checkKey(key, line) && line.length>1) {
-                result = line[1];
+            if (checkKey(key, line)) {
+                result = (line.length>1)?line[1]:"";
             }
         }
         return result;
