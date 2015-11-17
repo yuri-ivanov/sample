@@ -16,6 +16,7 @@ public class IndexerV1 implements Indexer {
 
     public static ArrayList<String> list = new ArrayList<String>();
 
+    @Override
     public void parse(String filename) {
         try {
             BufferedReader br = new BufferedReader(new FileReader(filename));
@@ -33,6 +34,7 @@ public class IndexerV1 implements Indexer {
     /***
      * Returns true if the list contains the given key.
      */
+    @Override
     public boolean containsEntry(String key) {
         boolean found = false;
         for (String entry : list) {
@@ -47,6 +49,7 @@ public class IndexerV1 implements Indexer {
     /***
      * Returns the value from the list if key is in list.
      */
+    @Override
     public String getValue(String key) {
         if (!containsEntry(key)) {
             return null;

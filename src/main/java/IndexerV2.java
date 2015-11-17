@@ -15,14 +15,16 @@ import java.util.List;
  */
 public class IndexerV2 implements Indexer{
     private final static String SPLIT_REGEXP = "\\|";
-    private List<String> list = new ArrayList<>();
 
+    private List<String[]> list = new ArrayList<>();
+
+    @Override
     public void parse(String filename) throws IOException {
         list.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = br.readLine()) != null) {
-                list.add(line);
+                list.add(line.split(SPLIT_REGEXP));
             }
         }
     }
@@ -30,11 +32,11 @@ public class IndexerV2 implements Indexer{
     /***
      * Returns true if the list contains the given key.
      */
+    @Override
     public boolean containsEntry(String key) {
         boolean found = false;
-        for (String entry : list) {
-            String entryKey = entry.split(SPLIT_REGEXP)[0];
-            if (entryKey.equals(key)) {
+        for (String[] entry : list) {
+            if (entry.length>0 && entry[0]!=null && entry[0].equals(key)) {
                 found = true;
             }
         }
@@ -44,16 +46,15 @@ public class IndexerV2 implements Indexer{
     /***
      * Returns the value from the list if key is in list.
      */
+    @Override
     public String getValue(String key) {
         if (!containsEntry(key)) {
             return null;
         }
         String result = "";
-        for (String entry : list) {
-            String[] splittedVal = entry.split(SPLIT_REGEXP);
-            String entryKey = splittedVal[0];
-            if (splittedVal.length>1 && key.equals(entryKey)) {
-                result = splittedVal[1];
+        for (String[] entry : list) {
+            if (entry.length>1 && key.equals(entry[0])) {
+                result = entry[1];
             }
         }
         return result;

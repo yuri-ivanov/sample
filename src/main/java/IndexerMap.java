@@ -16,15 +16,17 @@ import java.util.Map;
  */
 public class IndexerMap implements Indexer{
     private final static String SPLIT_REGEXP = "\\|";
+
     private Map<String, String> map = new HashMap<>();
 
+    @Override
     public void parse(String filename) throws IOException {
         map.clear();
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = br.readLine()) != null) {
                 String[] splittedVal = line.split(SPLIT_REGEXP);
-                if(splittedVal!=null && splittedVal.length>0){
+                if(splittedVal.length>0){
                     map.put(splittedVal[0], (splittedVal.length>1)?splittedVal[1]:"");
                 }
             }
@@ -34,6 +36,7 @@ public class IndexerMap implements Indexer{
     /***
      * Returns true if the map contains the given key.
      */
+    @Override
     public boolean containsEntry(String key) {
         return map.containsKey(key);
     }
@@ -41,6 +44,7 @@ public class IndexerMap implements Indexer{
     /***
      * Returns the value from the map if key is in map.
      */
+    @Override
     public String getValue(String key) {
         return map.get(key);
     }

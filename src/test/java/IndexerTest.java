@@ -10,7 +10,7 @@ public class IndexerTest {
 
     @Before
     public void setUp() throws IOException {
-        indexer = new IndexerMap();
+        indexer = new IndexerV2();
         indexer.parse("test.txt");
     }
 
@@ -22,7 +22,6 @@ public class IndexerTest {
     @Test
     public void shouldReadExistingFile() throws IOException {
         indexer.parse("test.txt");
-        assertThat(indexer).isNotNull();
     }
 
     @Test
