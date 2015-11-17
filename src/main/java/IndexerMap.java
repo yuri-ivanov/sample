@@ -7,12 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /***
- * input file format:
+ * Indexer with Map storage
  *
- *  foo|bar
- *  foo2|bar2
- *  .
- *  .
  */
 public class IndexerMap implements Indexer{
     private final static String SPLIT_REGEXP = "\\|";

@@ -6,12 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /***
- * input file format:
+ * refactored version with List storage
  *
- *  foo|bar
- *  foo2|bar2
- *  .
- *  .
  */
 public class IndexerV2 implements Indexer{
     private final static String SPLIT_REGEXP = "\\|";

@@ -5,12 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /***
- * input file format:
- *
- *  foo|bar
- *  foo2|bar2
- *  .
- *  .
+ * Original file
  */
 public class IndexerV1 implements Indexer {
 
