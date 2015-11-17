@@ -30,8 +30,8 @@ public class IndexerV2 implements Indexer{
     @Override
     public boolean containsEntry(String key) {
         boolean found = false;
-        for (String[] entry : list) {
-            if (entry.length>0 && entry[0]!=null && entry[0].equals(key)) {
+        for (String[] line : list) {
+            if (checkKey(key, line)) {
                 found = true;
             }
         }
@@ -47,12 +47,16 @@ public class IndexerV2 implements Indexer{
             return null;
         }
         String result = "";
-        for (String[] entry : list) {
-            if (entry.length>1 && key.equals(entry[0])) {
-                result = entry[1];
+        for (String[] line : list) {
+            if (checkKey(key, line) && line.length>1) {
+                result = line[1];
             }
         }
         return result;
+    }
+
+    private boolean checkKey(String key, String[] line) {
+        return line.length>0 && line[0]!=null && line[0].equals(key);
     }
 
 }
