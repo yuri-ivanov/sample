@@ -6,6 +6,8 @@ Given Java code here  https://gist.github.com/03f45bfcbacca576d283 explain the c
  * Jdk 1.8
  * maven
 
+I have spent about 3-4 hours on this task.
+
 ## Input
  Input data is text file test.txt 
  
