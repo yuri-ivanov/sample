@@ -27,9 +27,10 @@ public class IndexerMap implements Indexer{
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = br.readLine()) != null) {
+                //skip empty lines
+                if(line.isEmpty()) continue;
                 //only split into 2 elements so a|b|c will be a = b|c
                 String[] splittedVal = line.split(SPLIT_REGEXP, 2);
-                //skip empty lines
                 if(splittedVal.length>0){
                     if(map.containsKey(splittedVal[0])){
                         log.warning("entry "+ splittedVal[0]+"|"+map.get(splittedVal[0])+

@@ -13,10 +13,11 @@ I have spent about 3-4 hours on this task.
  
     foo|bar
     foo2|bar2
-    foo2|bar3
-    foo3|bar3|bar4
-    foo4
-    |
+    foo2|bar3      - last value will override
+    foo3|bar3|bar4 - should be read as foo3=bar3|bar4
+    foo4           - should be foo4 with empty value
+    |              - should be empty key with empty value
+                   - empty line should be skipped
 
 There should be 3 methods in class that reads file: 
 

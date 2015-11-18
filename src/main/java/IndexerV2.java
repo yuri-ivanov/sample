@@ -28,10 +28,10 @@ public class IndexerV2 implements Indexer{
         try (BufferedReader br = new BufferedReader(new FileReader(filename))){
             String line;
             while ((line = br.readLine()) != null) {
+                //skip empty lines
+                if(line.isEmpty()) continue;
                 //only split into 2 elements so a|b|c will be a = b|c
                 String[] entry = line.split(SPLIT_REGEXP, 2);
-                //skip empty lines
-                if(entry.length==0) continue;
                 int existEntryIndx = findEntry(entry[0]);
                 if(existEntryIndx<0){
                     list.add(entry);
