@@ -30,7 +30,7 @@ There should be 3 methods in class that reads file:
 ### Part 1 - Write tests
  Before start to change code I will write simple tests for original version. 
  IndexerTest.java has some simple tests cases what I will use to test refactored code.
- I don't want to change original version of code, that is why there is Indexer interface and original version in class IndexerV1.
+ I don't want to change original version of code, that is why there is Indexer interface and the original version is in class IndexerV1.
  
  IndexerV1 failed tests 
  + shouldReadEmptyValue
