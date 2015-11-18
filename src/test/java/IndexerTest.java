@@ -27,7 +27,7 @@ public class IndexerTest {
     @Test
     public void shouldReadKeyAndValue(){
         assertThat(indexer.containsEntry("foo")).isTrue();
-        assertThat(indexer.getValue("foo")).contains("bar");
+        assertThat(indexer.getValue("foo")).isEqualTo("bar");
     }
 
     @Test
@@ -37,8 +37,8 @@ public class IndexerTest {
 
     @Test
     public void shouldReadEmptyValue(){
-        assertThat(indexer.containsEntry("gg")).isTrue();
-        assertThat(indexer.getValue("gg")).isEmpty();
+        assertThat(indexer.containsEntry("foo4")).isTrue();
+        assertThat(indexer.getValue("foo4")).isEmpty();
     }
 
     @Test
@@ -51,6 +51,12 @@ public class IndexerTest {
     public void testNullKey(){
         assertThat(indexer.containsEntry(null)).isFalse();
         assertThat(indexer.getValue(null)).isNull();
+    }
+
+    @Test
+    public void testLineWith2Splitters(){
+        assertThat(indexer.containsEntry("foo3")).isTrue();
+        assertThat(indexer.getValue("foo3")).isEqualTo("bar3|bar4");
     }
 
 }

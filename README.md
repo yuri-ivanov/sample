@@ -14,6 +14,7 @@ I have spent about 3-4 hours on this task.
     foo|bar
     foo2|bar2
     foo2|bar3
+    foo3|bar3|bar4
     gg
     
 There should be 3 methods in class that reads file: 
@@ -35,6 +36,7 @@ There should be 3 methods in class that reads file:
  + shouldReadEmptyValue
  + testNullKey
  + shouldThrowExceptionOnWrongFile
+ + testLineWith2Splitters
  
 ### Part 2 - Improve code
  IndexerV2 is refactored version of Indexer.
