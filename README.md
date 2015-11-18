@@ -31,7 +31,7 @@ There should be 3 methods in class that reads file:
  IndexerTest.java has some simple tests cases what I will use to test refactored code.
  I don't want to change original version of code, that is why there is Indexer interface and original version in class IndexerV1.
  
- Failed tests with IndexerV1 implementation 
+ IndexerV1 failed tests 
  + shouldReadEmptyValue
  + testNullKey
  + shouldThrowExceptionOnWrongFile
