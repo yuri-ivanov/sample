@@ -59,4 +59,10 @@ public class IndexerTest {
         assertThat(indexer.getValue("foo3")).isEqualTo("bar3|bar4");
     }
 
+    @Test
+    public void testEmptyKey(){
+        assertThat(indexer.containsEntry("")).isTrue();
+        assertThat(indexer.getValue("")).isEqualTo("");
+    }
+
 }

@@ -15,8 +15,9 @@ I have spent about 3-4 hours on this task.
     foo2|bar2
     foo2|bar3
     foo3|bar3|bar4
-    gg
-    
+    foo4
+    |
+
 There should be 3 methods in class that reads file: 
 
     void parse(String filename) throws IOException;
